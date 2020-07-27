@@ -13,17 +13,18 @@ Our goal was to create a program that could successfuly replicate the Conway Gam
 #include <stdlib.h>
 #include <string.h>
 #include <pthread.h>
+#include <time.h>
 All these libraries assisted us in successfully executing our code. The input file, number of generations and the window size were taken by command line parameters. We used fprintf to print data into out file and fscanf to read data from our file into an array, so that we can use the array for our program.
 
 ## Problems Faces ##
 
-###Problem 1: Input file was not getting detected###
+Problem 1:Input file was not getting detected
 The first problem we faced was that our input file was not opening and instead we were getting segmentation fault error. We looked into the problem and we found that our file was not in the same location as our project file. We changed the location of the file and it started working.
 
-###Problem 2: The array data was not transferring from main scope to our thread###
+Problem 2: The array data was not transferring from main scope to our thread
 We faced several issued when we tried to move the array from main to our thread. The values of the array in the main scope were not movving to the array in our thread. Finally we trien typecasting with our create struct and it worked. We successfully got our array values from main scope to our thread.
 
-###Problem 3: Unable to read data from input file###
+Problem 3: Unable to read data from input file
 Evem after our program successfully detected the input file we were getting error while reading from the input file into our array. We first tried fgetc() command to read from file but it read the whole array as a single character but then we tried the commad fscanf() and then we were able to read invidual values from the whole array in the file.
 
 ##References##
