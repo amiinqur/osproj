@@ -8,13 +8,10 @@ StdID | Name
 63856 | Muhammad Ahmed Quraishi
 <!-- Replace name and student ids with acutally group member names and ids-->
 ## Approach ##
-Our goal was to create a program that could successfuly replicate the Conway Game of Life. We looked upon different resources and references on the internet, but in the end we used the basic approach of FOR loops and IF-ELSE conditions. We passed parameters to our thread using struct because there were multiple arguments that needed to be passed otherwise we would have simply directly passed it without any struct. We also used pointer character arrays to store and print data. We used FILE related commands to read and write data from the files. We had two files input.txt and output.txt to read from and write into. We used the following libraries:
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <pthread.h>
-#include <time.h>
-All these libraries assisted us in successfully executing our code. The input file, number of generations and the window size were taken by command line parameters. We used fprintf to print data into out file and fscanf to read data from our file into an array, so that we can use the array for our program.
+Implementing multi threading in our project was a very tough job, but we did it at last. We made some major changes in our code from single thread. We changed it in this way that the number of threads will decide how many generations will the program run for instead of the generation variable deciding that. We removed the for loop which ran until the number of generations instead now the thread process will run the number of times the threads are called. We also moved the writing process into the output file into the main scope instead of the thread like in previous single thread code. 
+We evalauted the time taken with various number of threads. 
+Time Taken: 2 mins - 3 Threads
+Time Taken: 1.5 mins - 4 Threads.
 
 ## Problems Faces ##
 
@@ -26,6 +23,9 @@ We faced several issued when we tried to move the array from main to our thread.
 
 Problem 3: Unable to read data from input file
 Evem after our program successfully detected the input file we were getting error while reading from the input file into our array. We first tried fgetc() command to read from file but it read the whole array as a single character but then we tried the commad fscanf() and then we were able to read invidual values from the whole array in the file.
+
+Problem 4: Problem in continuation of generations between threads
+With multiple threads the generations was not continuing instead the same generation was being printed again and again. To overcome this problem we made two global array variable in the beginning which helped us store the value of generation of every thread and in this way the generations continued without any issue and in the end the final state was printed into the output file. 
 
 ##References##
 - https://rosettacode.org/wiki/Conway%27s_Game_of_Life
