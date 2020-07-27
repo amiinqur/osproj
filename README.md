@@ -5,7 +5,7 @@ Conways game of Life
 StdID | Name
 ------------ | -------------
 **63855** | **Amin M. Quraishi** <!--this is the group leader in bold-->
-63855 | Muhammad Ahmed Quraishi
+63856 | Muhammad Ahmed Quraishi
 <!-- Replace name and student ids with acutally group member names and ids-->
 ## Approach ##
 Our goal was to create a program that could successfuly replicate the Conway Game of Life. We looked upon different resources and references on the internet, but in the end we used the basic approach of FOR loops and IF-ELSE conditions. We passed parameters to our thread using struct because there were multiple arguments that needed to be passed otherwise we would have simply directly passed it without any struct. We also used pointer character arrays to store and print data. We used FILE related commands to read and write data from the files. We had two files input.txt and output.txt to read from and write into. We used the following libraries:
