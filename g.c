@@ -6,17 +6,19 @@
 //SINGLE THREADED GAME OF LIFE
 
 
-
+//THIS IS OUR STRUCT PARAMETER
 struct args
 {
 	int app[4][8],i,j,g;
 };
+//THIS IS OUR THREAD
 void* threadSingle(void* input)
 {
 	int i,j,next[4][8],arr[4][8],gen;
 	i=((struct args*)input)->i;
 	j=((struct args*)input)->j;
 	gen=((struct args*)input)->g;
+	//THE FOR LOOPS MOVE THE ARRAY DATA FROM MAIN INTO OUR THREAD ARRAY WITH THE HELP OF OUR STRUCT PARAMETER 
 	for(int i=0;i<4;i++)
 	{
 		for(int j=0;j<8;j++)
@@ -25,6 +27,7 @@ void* threadSingle(void* input)
 		}
 		
 	}
+	//ALL THE LOOPS AND IF ELSE CONDITIONS BELOW MANAGE THE GENERATIONS AND EVENTUALLY WRITE THE FINAL STATE INTO OUTOUT FILE
 	for(int z=0;z<gen;z++)
 	{
 	for(int k=1;k<i-1;k++)
