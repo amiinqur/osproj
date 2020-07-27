@@ -9,13 +9,14 @@
 
 struct args
 {
-	int app[4][8],i,j;
+	int app[4][8],i,j,g;
 };
 void* threadSingle(void* input)
 {
-	int i,j,next[4][8],arr[4][8];
+	int i,j,next[4][8],arr[4][8],gen;
 	i=((struct args*)input)->i;
 	j=((struct args*)input)->j;
+	gen=((struct args*)input)->g;
 	for(int i=0;i<4;i++)
 	{
 		for(int j=0;j<8;j++)
@@ -24,6 +25,8 @@ void* threadSingle(void* input)
 		}
 		
 	}
+	for(int z=0;z<gen;z++)
+	{
 	for(int k=1;k<i-1;k++)
 	{
 		for(int p=1;p<j-1;p++)
@@ -55,7 +58,8 @@ void* threadSingle(void* input)
 			}
 		}
 	}
-	printf("Next Gen\n");
+    }
+	printf("Final State\n");
 	FILE *amod = fopen("output.txt","w");
 		for(int i=0;i<4;i++)
 	{
@@ -81,7 +85,7 @@ int main(char *file,int gen,int res[4][8])
 {
 	FILE *amod;
 	file="input.txt";
-	gen=1;
+	gen=10;
 	amod = fopen(file,"r");
 	for(int i=0;i<4;i++)
 	{
@@ -89,7 +93,6 @@ int main(char *file,int gen,int res[4][8])
 		{
 			fscanf(amod,"%d,",&res[i][j]);
 		}
-		
 	}
 	fclose(amod);
 	for(int i=0;i<4;i++)
@@ -119,6 +122,7 @@ int main(char *file,int gen,int res[4][8])
 	}
 	Amod->i=4;
 	Amod->j=8;
+	Amod->g=gen;
 	pthread_create(&tid1,NULL,&threadSingle,(void *)Amod);
 	pthread_join(tid1,NULL);
 	return 0;
