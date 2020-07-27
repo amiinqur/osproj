@@ -70,23 +70,19 @@ void* threadSingle(void* input)
 	sum += time;
     }
     	fprintf(amod,"Total Time: %f\n",sum);
-	printf("Final State\n");
 		for(int i=0;i<4;i++)
 	{
 		for(int j=0;j<8;j++)
 		{
 			if(arr[i][j]==0)
 			{
-				printf(".");
 				fprintf(amod,".");
 			}
 			else
 			{
-				printf("*");
 				fprintf(amod,"*");
 			}
 		}
-		printf("\n");
 		fprintf(amod,"\n");	
 	}
 	fclose(amod);
@@ -105,21 +101,6 @@ int main(char *file,int gen,int res[4][8])
 		}
 	}
 	fclose(amod);
-	for(int i=0;i<4;i++)
-	{
-		for(int j=0;j<8;j++)
-		{
-			if(res[i][j]==0)
-			{
-				printf(".");
-			}
-			else
-			{
-				printf("*");
-			}
-		}
-		printf("\n");	
-	}
 	pthread_t tid1;
 	struct args *Amod = (struct args *)malloc(sizeof(struct args));
 	for(int i=0;i<4;i++)
